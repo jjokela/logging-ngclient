@@ -1,0 +1,23 @@
+.icon-label {
+  color: rgba(0, 0, 0, 0.87); 
+}
+
+.button-panel-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  
+  margin-bottom: 15px;
+  background-color: #f5f5f5;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0 2px 0;
+}
+
+.mdl-button--fab.mdl-button--colored:focus:not(:active) {
+  background-color: rgb(63,81,181) !important;
+}

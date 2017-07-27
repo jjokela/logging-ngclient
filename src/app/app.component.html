@@ -1,0 +1,18 @@
+<mdl-layout #mdlLayout1="mdlLayout">
+      <mdl-layout-header mdl-layout-header-transparent class="title-bar">
+         <mdl-layout-header-row>
+            <mdl-layout-title>Log Dashboard</mdl-layout-title>
+         </mdl-layout-header-row>
+      </mdl-layout-header>
+      <mdl-layout-content>
+    <div class="page-content">
+      <!-- Your content goes here -->
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--10-col center-me">
+          <router-outlet></router-outlet>
+          <dialog-outlet></dialog-outlet>
+        </div>
+      </div>
+    </div>
+      </mdl-layout-content>
+   </mdl-layout>

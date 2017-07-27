@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "messageType": 0,
+        "title": "Error has occurred",
+        "message": "Oh doh, something went horribly wrong",
+        "created": "2012-04-23T18:25:43.511Z"
+    },
+    {
+        "id": 2,
+        "messageType": 1,
+        "title": "This is a warning",
+        "message": "This is just a warning (for now), but something might go soon wrong",
+        "created": "2012-04-23T18:25:43.511Z"
+    },
+    {
+        "id": 3,
+        "messageType": 2,
+        "title": "Everything went just peachy",
+        "message": "Hey guess what, everything went just fine!",
+        "created": "2012-04-23T18:25:43.511Z"
+    },
+    {
+        "id": 4,
+        "messageType": 3,
+        "title": "This is just for your information",
+        "message": "I'm just informing you that I'm informing you",
+        "created": "2012-04-23T18:25:43.511Z"
+    },
+    {
+        "id": 5,
+        "messageType": 0,
+        "title": "Error has occurred again",
+        "message": "Oh doh, here we go again",
+        "created": "2012-04-23T18:25:43.511Z"
+    },
+    {
+        "id": 6,
+        "messageType": 1,
+        "title": "I warned you already",
+        "message": "Se, I told you so",
+        "created": "2012-04-23T18:25:43.511Z"
+    }
+]

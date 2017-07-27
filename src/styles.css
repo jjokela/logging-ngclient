@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-color: #fafafa;
+}
+
+.mdl-layout__drawer-button {
+  color: rgba(0, 0, 0, 0.54) !important;
+}
+
+mdl-dialog-host-component {
+    padding:0 !important;
+}

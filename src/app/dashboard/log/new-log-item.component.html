@@ -1,0 +1,40 @@
+<form [formGroup]="form">
+  <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col foo">
+    <div class="mdl-card__title">
+      <h2 class="mdl-card__title-text">Create a new log message</h2>
+    </div>
+    <div class="mdl-card__supporting-text" style="width: auto">
+      <div class="separator"></div>
+      <div class="mdl-selectfield">
+        <label>Standard Select</label>
+        <select class="browser-default" formControlName="selectedValue" required>
+          <option [value]="-1" disabled selected>Choose an event type</option>
+          <option [value]="0">Error</option>
+          <option [value]="1">Warning</option>
+          <option [value]="2">Success</option>
+          <option [value]="3">Information</option>
+        </select>
+      </div>
+      <br />
+      <mdl-textfield formControlName="title" type="text" label="Title" required></mdl-textfield>
+      <br />
+      <mdl-textfield formControlName="message" label="Message" rows="3" maxrows="3" required></mdl-textfield>
+    </div>
+    <div class="mdl-card__actions" style="text-align: right;">
+      <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="close()">
+      Cancel
+    </a>
+      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="create()">
+      Create
+    </a> -->
+      <!-- Primary-colored flat button -->
+      <button mdl-button mdl-ripple mdl-colored="primary" (click)="close()">
+    Cancel
+  </button>
+      <!-- Accent-colored flat button -->
+      <button mdl-button mdl-ripple mdl-colored="primary" (click)="create()" [disabled]="!form.valid">
+    Create
+  </button>
+    </div>
+  </div>
+</form>

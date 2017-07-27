@@ -1,0 +1,5 @@
+ <div class="container mdl-shadow--2dp" (click)="showDialog($event)">
+    <div [ngClass]="currentClasses"><i class="material-icons">{{ mapEnumToIcon(log.messageType) }}</i></div>
+    <div class="item2">{{ log.title }}</div>
+    <div class="item3">{{ log.created | momentFromNow }}</div>
+</div> 

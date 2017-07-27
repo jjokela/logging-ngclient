@@ -1,0 +1,13 @@
+.center-me {
+  margin: 0 auto;
+}
+
+.page-content {
+  background-color: #fafafa;
+}
+
+.title-bar {
+  background-color: #f5f5f5;
+  color: rgba(0, 0, 0, 0.87);  
+}
+

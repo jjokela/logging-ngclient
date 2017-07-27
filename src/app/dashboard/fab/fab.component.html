@@ -1,0 +1,29 @@
+<!-- Mini FAB button -->
+<div class="oikee">
+    <!-- <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+        <i class="material-icons">add</i>
+    </button> -->
+  <mdl-fab-menu #mainFabMenu>
+    <mdl-fab-menu-item
+            [fabMenu]="mainFabMenu"
+            icon="note_add"
+            label="new log message"
+            (menu-clicked)="createLogMessage($event)">
+    </mdl-fab-menu-item>
+    <mdl-fab-menu-item
+            [fabMenu]="mainFabMenu"
+            icon="refresh"
+            label="refresh"
+            (menu-clicked)="alert('user elected to refresh!')">
+    </mdl-fab-menu-item>
+    <mdl-fab-menu-item
+            [fabMenu]="mainFabMenu"
+            icon="file_download"
+            label="download"
+            (menu-clicked)="alert('user elected to download ... but what exactly? ')">
+    </mdl-fab-menu-item>
+  </mdl-fab-menu>
+</div>
+
+ 
+

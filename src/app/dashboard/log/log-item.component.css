@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  background-color: #fff;
+}
+
+.item1 {
+  flex-basis: auto;
+  margin-right: 10px;
+}
+
+.item2 {
+  flex-basis: 90%;
+  max-height: 40px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: rgba(0, 0, 0, 0.87); 
+}
+
+.item3 {
+  flex-basis: auto;
+  color: rgba(0, 0, 0, 0.87);
+  margin-right: 3px;
+}
+
+.error {
+  color: #F44336;
+}
+
+.warning {
+  color: #FF9800;
+}
+
+.success{
+  color: #4CAF50;
+}
+
+.information {
+  color: #42A5F5;
+}

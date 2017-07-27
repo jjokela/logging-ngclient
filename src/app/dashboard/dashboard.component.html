@@ -1,0 +1,26 @@
+<!-- Expandable Textfield -->
+<div class="search-container">
+    <mdl-textfield type="text" [(ngModel)]="searchTerm" icon="search"></mdl-textfield>
+    <!-- Mini FAB button -->
+    <app-fab></app-fab>
+</div>
+<!-- / textfield -->
+
+<!-- button-panel-container -->
+<app-filter-buttons (onFilterChanged)="onFilterChanged($event)"></app-filter-buttons>
+
+<ng-container *ngFor="let log of getFilteredLogsWithSearch()">
+    <app-log-item [log]="log"></app-log-item>
+</ng-container>
+
+<div class="center-me no-results" *ngIf="getFilteredLogsWithSearch().length === 0 && !loading">
+    <h3>No results found</h3>
+</div>
+
+<div *ngIf="loading" class="center-me">
+    <mdl-spinner [active]="loading"></mdl-spinner>
+    <p>Loading data...</p>
+</div>
+
+<p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+ <pre>{{logs | json}}</pre> 

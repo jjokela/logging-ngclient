@@ -1,0 +1,17 @@
+.search-container {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.center-me {
+    text-align: center;
+}
+
+.error-message {
+    color: #F44336;
+}
+
+.no-results {
+    padding-top: 20px;
+}
