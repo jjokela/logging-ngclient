@@ -1,6 +1,12 @@
 <!-- Expandable Textfield -->
 <div class="search-container">
-    <mdl-textfield type="text" [(ngModel)]="searchTerm" icon="search"></mdl-textfield>
+    <div>
+        <mdl-textfield type="text" [(ngModel)]="searchTerm" icon="search"></mdl-textfield>
+        <!-- Icon button -->
+        <button *ngIf="searchTerm" mdl-button mdl-button-type="icon" (click)="clearSearch()">
+            <mdl-icon>clear</mdl-icon>
+        </button>
+    </div>
     <!-- Mini FAB button -->
     <app-fab></app-fab>
 </div>
@@ -23,4 +29,4 @@
 </div>
 
 <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
- <pre>{{logs | json}}</pre> 
+<!-- <pre>{{logs | json}}</pre> -->

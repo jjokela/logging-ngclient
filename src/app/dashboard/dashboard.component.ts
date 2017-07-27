@@ -80,6 +80,10 @@ export class DashboardComponent implements OnInit {
         this.getLogs();
     }
 
+    clearSearch() {
+        this.searchTerm = '';
+    }
+
     createFilteredLogs() {
         this.filteredLogs = this.logs.filter((element) => {
             return this.filterTypes.indexOf(element.messageType) !== -1 && !element.isRead;
