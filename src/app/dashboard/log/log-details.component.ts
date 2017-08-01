@@ -1,5 +1,4 @@
 import { Component, OnInit, InjectionToken, ViewChild, Inject, HostListener } from '@angular/core';
-import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms';
 import { MdlTextFieldComponent } from '@angular-mdl/core';
 import { MdlDialogReference } from '@angular-mdl/core';
 import { Log } from '../models/log.model';
@@ -17,7 +16,6 @@ export class LogDetailsComponent implements OnInit {
 
     constructor(
         private dialog: MdlDialogReference,
-        private fb: FormBuilder,
         private service: SeedService,
         public log: Log) {
 

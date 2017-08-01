@@ -1,0 +1,25 @@
+.foo {
+    margin: 0;
+    width: calc(100% - 0px);
+} 
+
+.mdl-card__title {
+  color: #fff;
+  height: 360px;
+  background: url('http://semantic-ui.com/images/avatar2/large/kristy.png') center / cover;
+}
+
+.mdl-card__supporting-text {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.funny-button {
+  color: inherit !important;
+}
+
+.funny-button-activated {
+  color: #fff !important;
+  background-color: rgb(63,81,181) !important;
+}

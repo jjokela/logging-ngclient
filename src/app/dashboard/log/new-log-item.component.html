@@ -28,11 +28,11 @@
       Create
     </a> -->
       <!-- Primary-colored flat button -->
-      <button mdl-button mdl-ripple mdl-colored="primary" (click)="close()">
+      <button mdl-button mdl-ripple mdl-colored="primary" (click)="close($event)">
     Cancel
   </button>
       <!-- Accent-colored flat button -->
-      <button mdl-button mdl-ripple mdl-colored="primary" (click)="create()" [disabled]="!form.valid">
+      <button mdl-button mdl-ripple mdl-colored="primary" (click)="create($event)" [disabled]="!form.valid">
     Create
   </button>
     </div>

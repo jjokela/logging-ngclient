@@ -14,6 +14,16 @@ import { MdlModule } from '@angular-mdl/core';
 import { MdlPopoverModule } from '@angular-mdl/popover';
 import { MdlFabMenuModule } from './fab-menu/fab-menu';
 
+import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import 'hammerjs';
+declare var Hammer: any;
+
+export class MyHammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    'swipe': { direction: Hammer.DIRECTION_ALL }
+  };
+}
+
 export function createConfig(): SignalRConfiguration {
   const c = new SignalRConfiguration();
   c.hubName = 'logHub';
@@ -39,7 +49,10 @@ export function createConfig(): SignalRConfiguration {
     HttpModule,
     SignalRModule.forRoot(createConfig)
   ],
-  providers: [],
+  providers: [{
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: MyHammerConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

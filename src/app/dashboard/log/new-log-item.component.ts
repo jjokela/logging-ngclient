@@ -36,16 +36,7 @@ export class NewLogItemComponent implements OnInit {
         // just if you want to be informed if the dialog is hidden
         this.dialog.onHide().subscribe((user) => {
             console.log('login dialog hidden');
-            if (user) {
-                console.log('authenticated user', user);
-            }
         });
-
-        this.dialog.onVisible().subscribe(() => {
-            console.log('set focus');
-            // this.inputElement.setFocus();
-        });
-
     }
 
 
@@ -57,13 +48,13 @@ export class NewLogItemComponent implements OnInit {
         });
     }
 
-
-    public close() {
+    public close(event: Event) {
+        event.preventDefault();
         this.dialog.hide();
     }
 
-    public create() {
-
+    public create(event: Event) {
+        event.preventDefault();
         const log = new Log(-1, this.selectedValue.value, this.title.value, this.message.value, new Date(), false);
         console.log(log);
 
@@ -78,26 +69,7 @@ export class NewLogItemComponent implements OnInit {
                 console.log('dun');
                 this.dialog.hide();
             }
-        );
-//        this.mdlSnackbarService.showToast('Vine');
-
-    }
-
-    public login() {
-        this.processingLogin = true;
-        this.statusMessage = 'checking your credentials ...';
-
-        // let obs = this.loginService.login(this.username.value, this.password.value);
-        // obs.subscribe( user => {
-
-        this.processingLogin = false;
-        this.statusMessage = 'you are logged in ...';
-
-        setTimeout(() => {
-            this.dialog.hide();
-        }, 500);
-
-        // });
+            );
     }
 
     @HostListener('keydown.esc')

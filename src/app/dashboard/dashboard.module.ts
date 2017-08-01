@@ -45,6 +45,6 @@ import { MomentPipe } from './log/moment.pipe';
         MomentPipe
     ],
     providers: [ SeedService, LogApiService, ConnectionResolver ],
-    entryComponents: [ LogDetailsComponent, NewLogItemComponent ]
+    entryComponents: [ LogDetailsComponent, NewLogItemComponent, HelpComponent ]
 })
 export class DashboardModule { }
