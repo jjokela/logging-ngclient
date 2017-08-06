@@ -23,6 +23,7 @@ export class NewLogItemComponent implements OnInit {
 
     public processingLogin = false;
     public statusMessage = '';
+    public saving = false;
 
     constructor(
         private dialog: MdlDialogReference,
@@ -57,16 +58,18 @@ export class NewLogItemComponent implements OnInit {
         event.preventDefault();
         const log = new Log(-1, this.selectedValue.value, this.title.value, this.message.value, new Date(), false);
         console.log(log);
-
+        this.saving = true;
         this.service.createNew(log)
             .subscribe(
             response => console.log(response),
             error => {
                 console.log(error);
-                this.dialog.hide();
+                this.saving = false;
+                // this.dialog.hide();
             },
             () => {
                 console.log('dun');
+                this.saving = false;
                 this.dialog.hide();
             }
             );

@@ -11,7 +11,9 @@ import { Log } from '../models/log.model';
 export class SeedService {
 
 
-  url = 'http://loggingweb2.azurewebsites.net/api/LogMessages';
+  baseUrl = 'http://loggingweb2.azurewebsites.net/api';
+  url = this.baseUrl + '/LogMessages';
+  deleteUrl = this.baseUrl + '/ResetLogs' ;
   // assets/seed.json
   /**
    * Creates a new NameListService with the injected Http.
@@ -34,14 +36,18 @@ export class SeedService {
   dismiss(logMessage: Log): Observable<Log> {
     return this.http.put(`${this.url}/${logMessage.id}`, logMessage)
       .map((res: Response) => res.json())
-      // .do(data => console.log('server data:', data))  // debug
       .catch(this.handleError);
   }
 
   createNew(logMessage: Log): Observable<Response> {
     return this.http.post(`${this.url}`, logMessage)
       .map(res => res ? res.json() : {})
-      // .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  resetDb(): Observable<Response> {
+    return this.http.post(`${this.deleteUrl}`, {})
+      .map(res => res ? res.json() : {})
       .catch(this.handleError);
   }
 

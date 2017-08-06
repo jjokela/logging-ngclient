@@ -6,13 +6,9 @@
     {{ log.message }}
   </div>
   <div class="mdl-card__actions mdl-card--border" style="text-align: right;">
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-       (click)="close()">
-      Close
-    </a>
-    <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect"
-       (click)="dismiss()">
-      Dismiss
-    </a>
+    <span *ngIf="saving">Saving...</span>
+    <mdl-spinner [active]="saving"></mdl-spinner>
+    <button mdl-button mdl-ripple mdl-colored="primary" (click)="close()">Close</button>
+    <button mdl-button mdl-ripple mdl-colored="primary" (click)="dismiss()">Dismiss</button>
   </div>
 </div>

@@ -14,6 +14,8 @@ export const TEST_VALUE = new InjectionToken<string>('test value');
 
 export class LogDetailsComponent implements OnInit {
 
+    public saving = false;
+
     constructor(
         private dialog: MdlDialogReference,
         private service: SeedService,
@@ -38,18 +40,20 @@ export class LogDetailsComponent implements OnInit {
 
     public dismiss() {
         this.log.isRead = true;
-
+        this.saving = true;
         this.service.dismiss(this.log)
             .subscribe(
             log => console.log('dismissed'),
             error => {
                 console.log(error);
+                this.saving = false;
             },
             () => {
                 console.log('dun');
+                this.saving = false;
+                this.dialog.hide();
             }
         );
-        this.dialog.hide();
     }
 
     @HostListener('keydown.esc')

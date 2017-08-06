@@ -89,7 +89,21 @@ export class HelpComponent implements OnInit {
         this.dialog.hide();
     }
 
-    public dismiss() {
+    public destroy() {
+        this.service.resetDb()
+            .subscribe(
+            response => console.log(response),
+            error => {
+                console.log(error);
+                this.dialog.hide();
+            },
+            () => {
+                console.log('dun');
+                // force reload
+                window.location.reload();
+                // this.dialog.hide();
+            }
+            );
         this.dialog.hide();
     }
 

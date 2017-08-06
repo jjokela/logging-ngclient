@@ -21,12 +21,8 @@
       <mdl-textfield formControlName="message" label="Message" rows="3" maxrows="3" required></mdl-textfield>
     </div>
     <div class="mdl-card__actions" style="text-align: right;">
-      <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="close()">
-      Cancel
-    </a>
-      <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" (click)="create()">
-      Create
-    </a> -->
+      <span *ngIf="saving">Saving...</span>
+      <mdl-spinner [active]="saving"></mdl-spinner>
       <!-- Primary-colored flat button -->
       <button mdl-button mdl-ripple mdl-colored="primary" (click)="close($event)">
     Cancel
