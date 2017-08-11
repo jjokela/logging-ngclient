@@ -60,29 +60,6 @@ export class LogItemComponent implements OnInit {
         return iconText;
     }
 
-    public mapEnumToClass(messageType: number) {
-
-        let color: string;
-
-        switch (messageType) {
-            case 0: // error
-                color = 'error';
-                break;
-            case 1: // warning
-                color = 'warning';
-                break;
-            case 2: // success
-                color = 'success';
-                break;
-            case 3: // information
-                color = 'information';
-                break;
-            default:
-                break;
-        }
-        return color;
-    }
-
     public alert() {
         const result = this.dialogService.alert('This is a simple Alert');
         result.subscribe(() => console.log('alert closed'));

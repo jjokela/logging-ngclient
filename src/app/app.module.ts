@@ -27,7 +27,6 @@ export class MyHammerConfig extends HammerGestureConfig {
 export function createConfig(): SignalRConfiguration {
   const c = new SignalRConfiguration();
   c.hubName = 'logHub';
-  c.qs = { user: 'donald' };
   c.url = 'http://loggingweb2.azurewebsites.net';
   c.logging = true;
   return c;

@@ -1,36 +1,15 @@
 <!-- button-panel-container -->
 <div class="button-panel-container">
-    <div class="button-container" (click)="errorClicked()">
-        <!-- Mini FAB button -->
-        <button id="error" [ngClass]="{'mdl-button--colored mdl-button--fab mdl-button--primary' : selectedItems.errorSelected}" 
-        class="mdl-button mdl-js-button mdl-button--icon">
-    <i class="material-icons">highlight_off</i>
-  </button>
-        <span class="icon-label">Error</span>
-    </div>
-    <div class="button-container" (click)="warningClicked()">
-        <!-- Mini FAB button -->
-        <button id="warning" [ngClass]="{'mdl-button--colored mdl-button--fab mdl-button--primary' : selectedItems.warningSelected}" 
-        class="mdl-button mdl-js-button mdl-button--icon">
-    <i class="material-icons">error_outline</i>
-  </button>
-        <span class="icon-label">Warning</span>
-    </div>
-    <div class="button-container" (click)="successClicked()">
-        <!-- Mini FAB button -->
-        <button id="success" [ngClass]="{'mdl-button--colored mdl-button--fab mdl-button--primary' : selectedItems.successSelected}" 
-        class="mdl-button mdl-js-button mdl-button--icon">
-    <i class="material-icons">done</i>
-  </button>
-        <span class="icon-label">Success</span>
-    </div>
-    <div class="button-container" (click)="infoClicked()">
-        <!-- Mini FAB button -->
-        <button id="information" [ngClass]="{'mdl-button--colored mdl-button--fab mdl-button--primary' : selectedItems.infoSelected}" 
-        class="mdl-button mdl-js-button mdl-button--icon">
-    <i class="material-icons">info_outline</i>
-  </button>
-        <span class="icon-label">Information</span>
-    </div>
+
+    <ng-container *ngFor="let filter of filters">
+        <div class="button-container" (click)="filterClicked(filter)">
+            <!-- Mini FAB button -->
+            <button id="filter.type" [ngClass]="{'mdl-button--colored mdl-button--fab mdl-button--primary' : filter.selected}"
+                class="mdl-button mdl-js-button mdl-button--icon">
+                        <i class="material-icons">{{ filter.icon }}</i>
+                    </button>
+            <span class="icon-label">{{ filter.label }}</span>
+        </div>
+    </ng-container>
 </div>
 <!-- /.button-panel-container -->

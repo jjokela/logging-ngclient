@@ -3,7 +3,7 @@ import { FormGroup, Validators, FormControl, FormBuilder } from '@angular/forms'
 import { MdlTextFieldComponent } from '@angular-mdl/core';
 import { MdlDialogReference } from '@angular-mdl/core';
 import { MdlSnackbarService } from '@angular-mdl/core';
-import { SeedService } from '../services/seed.service';
+import { LogApiService } from '../services/log-api.service';
 import { Log } from '../models/log.model';
 export const TEST_VALUE = new InjectionToken<string>('test value');
 
@@ -29,7 +29,7 @@ export class NewLogItemComponent implements OnInit {
         private dialog: MdlDialogReference,
         private mdlSnackbarService: MdlSnackbarService,
         private fb: FormBuilder,
-        private service: SeedService,
+        private service: LogApiService,
         @Inject(TEST_VALUE) testValue: string) {
 
         console.log(`injected test value: ${testValue}`);

@@ -2,7 +2,7 @@ import { Component, OnInit, InjectionToken, ViewChild, Inject, HostListener } fr
 import { MdlTextFieldComponent } from '@angular-mdl/core';
 import { MdlDialogReference } from '@angular-mdl/core';
 import { Log } from '../models/log.model';
-import { SeedService } from '../services/seed.service';
+import { LogApiService } from '../services/log-api.service';
 
 export const TEST_VALUE = new InjectionToken<string>('test value');
 
@@ -18,7 +18,7 @@ export class LogDetailsComponent implements OnInit {
 
     constructor(
         private dialog: MdlDialogReference,
-        private service: SeedService,
+        private service: LogApiService,
         public log: Log) {
 
         console.log(`injected test value: ${log.title}`);

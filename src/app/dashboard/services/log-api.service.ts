@@ -1,35 +1,60 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+// import 'rxjs/add/operator/do';  // for debugging
 import { Log } from '../models/log.model';
 
+/**
+ * This class provides the NameList service with methods to read names and add names.
+ */
 @Injectable()
 export class LogApiService {
 
-    url = 'http://loggingweb2.azurewebsites.net/api/LogMessages';
 
+  baseUrl = 'http://loggingweb2.azurewebsites.net/api';
+  url = this.baseUrl + '/LogMessages';
+  deleteUrl = this.baseUrl + '/ResetLogs' ;
+  // assets/seed.json
   /**
    * Creates a new NameListService with the injected Http.
    * @param {Http} http - The injected Http.
    * @constructor
    */
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
   /**
    * Returns an Observable for the HTTP GET request for the JSON resource.
    * @return {Log[]} The Observable for the HTTP request.
    */
   get(): Observable<Log[]> {
-    return this.http.get('assets/seed.json')
-                    .map((res: Response) => res.json())
-    //              .do(data => console.log('server data:', data))  // debug
-                    .catch(this.handleError);
+    return this.http.get(`${this.url}`)
+      .map((res: Response) => res.json())
+      // .do(data => console.log('server data:', data))  // debug
+      .catch(this.handleError);
+  }
+
+  dismiss(logMessage: Log): Observable<Log> {
+    return this.http.put(`${this.url}/${logMessage.id}`, logMessage)
+      .map((res: Response) => res.json())
+      .catch(this.handleError);
+  }
+
+  createNew(logMessage: Log): Observable<Response> {
+    return this.http.post(`${this.url}`, logMessage)
+      .map(res => res ? res.json() : {})
+      .catch(this.handleError);
+  }
+
+  resetDb(): Observable<Response> {
+    return this.http.post(`${this.deleteUrl}`, {})
+      .map(res => res ? res.json() : {})
+      .catch(this.handleError);
   }
 
   /**
     * Handle HTTP error
     */
-  private handleError (error: any) {
+  private handleError(error: any) {
     // In a real world app, we might use a remote logging infrastructure
     // We'd also dig deeper into the error to get a better message
     const errMsg = (error.message) ? error.message :
@@ -38,17 +63,3 @@ export class LogApiService {
     return Observable.throw(errMsg);
   }
 }
-
-
-
-
-
-
-// import { Injectable } from '@angular/core';
-// import { Http, Response } from '@angular/common/http';
-
-// @Injectable()
-// export class ServiceNameService {
-//     constructor(private httpClient: HttpClient) { }
-    
-// }

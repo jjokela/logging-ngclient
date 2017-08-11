@@ -14,7 +14,6 @@ import { ConnectionResolver } from './dashboard.route.resolver';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 
 import { LogApiService } from './services/log-api.service';
-import { SeedService } from './services/seed.service';
 
 import { MdlModule } from '@angular-mdl/core';
 import { MdlPopoverModule } from '@angular-mdl/popover';
@@ -44,7 +43,7 @@ import { MomentPipe } from './log/moment.pipe';
         NewLogItemComponent,
         MomentPipe
     ],
-    providers: [ SeedService, LogApiService, ConnectionResolver ],
+    providers: [ LogApiService, ConnectionResolver ],
     entryComponents: [ LogDetailsComponent, NewLogItemComponent, HelpComponent ]
 })
 export class DashboardModule { }

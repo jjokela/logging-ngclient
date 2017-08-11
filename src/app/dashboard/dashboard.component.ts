@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { SignalRConnection, BroadcastEventListener, ConnectionStatus } from 'ng2-signalr';
 
 import { MdlSnackbarService } from '@angular-mdl/core';
-import { SeedService } from './services/seed.service';
+import { LogApiService } from './services/log-api.service';
 import { Log } from './models/log.model';
 
 @Component({
@@ -24,7 +24,7 @@ export class DashboardComponent implements OnInit {
     private connection: SignalRConnection;
     private _subscription: Subscription;
 
-    constructor(private service: SeedService,
+    constructor(private service: LogApiService,
         private mdlSnackbarService: MdlSnackbarService,
         private route: ActivatedRoute) {
         this.connection = route.snapshot.data['connection'];
@@ -119,14 +119,14 @@ export class DashboardComponent implements OnInit {
         this.loading = true;
         this.service.get()
             .subscribe(
-            logs => this.logs = this.filteredLogs = logs,
-            error => {
-                this.errorMessage = <any>error;
-                this.loading = false;
-            },
-            () => {
-                this.loading = false;
-            }
+                logs => this.logs = this.filteredLogs = logs,
+                error => {
+                    this.errorMessage = <any>error;
+                    this.loading = false;
+                },
+                () => {
+                    this.loading = false;
+                }
             );
     }
 }

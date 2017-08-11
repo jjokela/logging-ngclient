@@ -12,16 +12,3 @@ export class ConnectionResolver implements Resolve<SignalRConnection> {
         return this._signalR.connect().catch((error) => { console.log(error); });
     }
 }
-
-
-/*
-loadUsers() {
-  fetch('/api/users').then((response) => {
-    return response.json();
-  }).then((data) => {
-    this.users = data;
-  }).catch((ex) => {
-    console.error('Error fetching users', ex);
-  });
-}
-*/

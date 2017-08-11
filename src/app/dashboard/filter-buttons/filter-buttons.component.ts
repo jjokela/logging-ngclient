@@ -10,6 +10,37 @@ export class FilterButtonsComponent implements OnInit {
 
     @Output() onFilterChanged = new EventEmitter<number[]>();
 
+    filters = [
+        {
+            type: 'error',
+            selected: true,
+            icon: 'highlight_off',
+            label: 'Error',
+            index: 0
+        },
+        {
+            type: 'warning',
+            selected: true,
+            icon: 'error_outline',
+            label: 'Warning',
+            index: 1
+        },
+        {
+            type: 'success',
+            selected: true,
+            icon: 'error_outline',
+            label: 'Success',
+            index: 2
+        },
+        {
+            type: 'information',
+            selected: true,
+            icon: 'info_outline',
+            label: 'Information',
+            index: 3
+        }
+    ];
+
     selectedItems = {
         infoSelected: true,
         errorSelected: true,
@@ -22,39 +53,18 @@ export class FilterButtonsComponent implements OnInit {
     ngOnInit() { }
 
     filterChanged() {
-        const selectedFilters = [];
-        if (this.selectedItems.errorSelected) {
-            selectedFilters.push(0);
-        }
-        if (this.selectedItems.warningSelected) {
-            selectedFilters.push(1);
-        }
-        if (this.selectedItems.successSelected) {
-            selectedFilters.push(2);
-        }
-        if (this.selectedItems.infoSelected) {
-            selectedFilters.push(3);
-        }
+        const selectedFilters = this.filters
+            .filter(x => x.selected)
+            .map(val => {
+                return val.index;
+            });
+        console.log('selectedFilters');
+        console.log(selectedFilters);
         this.onFilterChanged.emit(selectedFilters);
     }
 
-    infoClicked() {
-        this.selectedItems.infoSelected = !this.selectedItems.infoSelected;
-        this.filterChanged();
-    }
-
-    errorClicked() {
-        this.selectedItems.errorSelected = !this.selectedItems.errorSelected;
-        this.filterChanged();
-    }
-
-    successClicked() {
-        this.selectedItems.successSelected = !this.selectedItems.successSelected;
-        this.filterChanged();
-    }
-
-    warningClicked() {
-        this.selectedItems.warningSelected = !this.selectedItems.warningSelected;
+    filterClicked(filter: any) {
+        filter.selected = !filter.selected;
         this.filterChanged();
     }
 }

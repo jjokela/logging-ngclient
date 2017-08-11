@@ -2,7 +2,7 @@ import { Component, OnInit, InjectionToken, ViewChild, Inject, HostListener } fr
 
 import { MdlTextFieldComponent } from '@angular-mdl/core';
 import { MdlDialogReference } from '@angular-mdl/core';
-import { SeedService } from '../services/seed.service';
+import { LogApiService } from '../services/log-api.service';
 
 @Component({
     selector: 'app-help-log',
@@ -31,7 +31,7 @@ export class HelpComponent implements OnInit {
 
     constructor(
         private dialog: MdlDialogReference,
-        private service: SeedService) {
+        private service: LogApiService) {
 
         // just if you want to be informed if the dialog is hidden
         this.dialog.onHide().subscribe((user) => {
