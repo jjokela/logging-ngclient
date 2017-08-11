@@ -28,7 +28,7 @@ export class FilterButtonsComponent implements OnInit {
         {
             type: 'success',
             selected: true,
-            icon: 'error_outline',
+            icon: 'done',
             label: 'Success',
             index: 2
         },
