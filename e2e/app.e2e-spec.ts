@@ -1,6 +1,6 @@
 import { NewnewPage } from './app.po';
 
-describe('newnew App', () => {
+describe('logdashboard App', () => {
   let page: NewnewPage;
 
   beforeEach(() => {
