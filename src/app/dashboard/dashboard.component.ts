@@ -22,7 +22,7 @@ export class DashboardComponent implements OnInit {
     public loading = false;
     public searchTerm = '';
     private connection: SignalRConnection;
-    private _subscription: Subscription;
+    private subscription: Subscription;
 
     constructor(private service: LogApiService,
         private mdlSnackbarService: MdlSnackbarService,
@@ -34,50 +34,58 @@ export class DashboardComponent implements OnInit {
         console.log('init');
 
         if (this.connection) {
-            console.log(`*** Connection status: ${status}`);
-
-            const onMessageSent$ = new BroadcastEventListener<any>('publishMessage');
-            const onUpdateMessage$ = new BroadcastEventListener<any>('updateMessage');
-
-            this.connection.status.subscribe((status: ConnectionStatus) => {
-                console.log(`*** Connection status: ${status}`);
-            });
-
-            // listen for connection errors
-            this.connection.errors.subscribe((error: any) => {
-                console.log(`*** Error status: ${error}`);
-            });
-
-            // register the listeners
-            this.connection.listen(onMessageSent$);
-            this.connection.listen(onUpdateMessage$);
-
-            // subscribe to event
-            this._subscription = onMessageSent$.subscribe((logMessage: Log) => {
-                console.log(`log message received`);
-                console.log(logMessage);
-                this.mdlSnackbarService.showToast('New message received');
-                this.logs.push(logMessage);
-                this.sortLogs();
-                this.createFilteredLogs();
-            });
-
-            this._subscription = onUpdateMessage$.subscribe((logMessage: Log) => {
-                console.log(`update message received`);
-                console.log(logMessage);
-
-                const logItem = this.logs.find(x => x.id === logMessage.id);
-                Object.assign(logItem, logMessage);
-
-                this.mdlSnackbarService.showToast('Message dismissed');
-                this.createFilteredLogs();
-            });
+            this.subscribe();
 
             this.mdlSnackbarService.showToast('Connection established');
         } else {
             this.mdlSnackbarService.showToast('Error: Couldn\'t establish SignalR connection');
         }
         this.getLogs();
+    }
+
+    subscribe() {
+        console.log(`*** Connection status: ${status}`);
+
+        const onMessageSent$ = new BroadcastEventListener<any>('publishMessage');
+        const onUpdateMessage$ = new BroadcastEventListener<any>('updateMessage');
+
+        this.connection.status.subscribe((status: ConnectionStatus) => {
+            console.log(`*** Connection status: ${status}`);
+        });
+
+        // listen for connection errors
+        this.connection.errors.subscribe((error: any) => {
+            console.log(`*** Error status: ${error}`);
+        });
+
+        // register the listeners
+        this.connection.listen(onMessageSent$);
+        this.connection.listen(onUpdateMessage$);
+
+        // subscribe to event
+        this.subscription = onMessageSent$.subscribe((logMessage: Log) => this.onMessageSent(logMessage));
+
+        this.subscription = onUpdateMessage$.subscribe((logMessage: Log) => this.onUpdateMessage(logMessage));
+    }
+
+    onMessageSent(logMessage: Log) {
+        console.log(`log message received`);
+        console.log(logMessage);
+        this.mdlSnackbarService.showToast('New message received');
+        this.logs.push(logMessage);
+        this.sortLogs();
+        this.createFilteredLogs();
+    }
+
+    onUpdateMessage(logMessage: Log) {
+        console.log(`update message received`);
+        console.log(logMessage);
+
+        const logItem = this.logs.find(x => x.id === logMessage.id);
+        Object.assign(logItem, logMessage);
+
+        this.mdlSnackbarService.showToast('Message dismissed');
+        this.createFilteredLogs();
     }
 
     clearSearch() {
@@ -119,14 +127,14 @@ export class DashboardComponent implements OnInit {
         this.loading = true;
         this.service.get()
             .subscribe(
-                logs => this.logs = this.filteredLogs = logs,
-                error => {
-                    this.errorMessage = <any>error;
-                    this.loading = false;
-                },
-                () => {
-                    this.loading = false;
-                }
+            logs => this.logs = this.filteredLogs = logs,
+            error => {
+                this.errorMessage = <any>error;
+                this.loading = false;
+            },
+            () => {
+                this.loading = false;
+            }
             );
     }
 }

@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './dashboard.component';
 import { FabComponent } from './fab/fab.component';
 import { FilterButtonsComponent } from './filter-buttons/filter-buttons.component';
-import { HelpComponent } from './help/help.component';
+import { ResetComponent } from './reset/reset.component';
+import { AboutComponent } from './about/about.component';
 import { LogDetailsComponent } from './log/log-details.component';
 import { LogItemComponent } from './log/log-item.component';
 import { NewLogItemComponent } from './log/new-log-item.component';
@@ -34,16 +35,17 @@ import { MomentPipe } from './log/moment.pipe';
         ReactiveFormsModule ],
     exports: [ DashboardComponent ],
     declarations: [
+        AboutComponent,
         DashboardComponent,
         FabComponent,
         FilterButtonsComponent,
-        HelpComponent,
+        ResetComponent,
         LogDetailsComponent,
         LogItemComponent,
         NewLogItemComponent,
         MomentPipe
     ],
     providers: [ LogApiService, ConnectionResolver ],
-    entryComponents: [ LogDetailsComponent, NewLogItemComponent, HelpComponent ]
+    entryComponents: [ LogDetailsComponent, NewLogItemComponent, ResetComponent, AboutComponent ]
 })
 export class DashboardModule { }

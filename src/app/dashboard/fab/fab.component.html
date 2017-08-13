@@ -10,14 +10,14 @@
     <mdl-fab-menu-item
             [fabMenu]="mainFabMenu"
             icon="refresh"
-            label="refresh"
-            (menu-clicked)="showHelp($event)">
+            label="reset"
+            (menu-clicked)="showReset($event)">
     </mdl-fab-menu-item>
     <mdl-fab-menu-item
             [fabMenu]="mainFabMenu"
-            icon="file_download"
-            label="download"
-            (menu-clicked)="alert('user elected to download ... but what exactly? ')">
+            icon="help"
+            label="about"
+            (menu-clicked)="showAbout($event)">
     </mdl-fab-menu-item>
   </mdl-fab-menu>
 </div>

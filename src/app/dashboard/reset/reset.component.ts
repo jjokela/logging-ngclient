@@ -5,12 +5,12 @@ import { MdlDialogReference } from '@angular-mdl/core';
 import { LogApiService } from '../services/log-api.service';
 
 @Component({
-    selector: 'app-help-log',
-    templateUrl: 'help.component.html',
-    styleUrls: ['help.component.css']
+    selector: 'app-reset-log',
+    templateUrl: 'reset.component.html',
+    styleUrls: ['reset.component.css']
 })
 
-export class HelpComponent implements OnInit {
+export class ResetComponent implements OnInit {
 
     ACTION = { LEFT: 2, RIGHT: 4, UP: 8, DOWN: 16, TAP: 1 };
 
