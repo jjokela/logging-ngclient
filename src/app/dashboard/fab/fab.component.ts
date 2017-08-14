@@ -29,7 +29,7 @@ export class FabComponent implements OnInit {
             isModal: true,
             styles: { 'margin': '0 auto' },
             classes: 'mdl-cell mdl-cell--3-col mdl-cell--4-col-phone',
-            clickOutsideToClose: true,
+            clickOutsideToClose: false,
             animate: true,
             openFrom: $event,
             enterTransitionDuration: 400,
